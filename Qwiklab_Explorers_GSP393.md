@@ -11,11 +11,11 @@
 
 
 ```
-curl -LO raw.githubusercontent.com/Titash-shil/VPC-Networking-Fundamentals-GSP210-Updated/refs/heads/main/qwiklab_explorers_gsp210.sh
+curl -LO raw.githubusercontent.com/Titash-shil/Implement-CI-CD-Pipelines-on-Google-Cloud-Challenge-Lab-GSP393-Updated/refs/heads/main/qwiklab_explorers_gsp393.sh
 
-sudo chmod +x qwiklab_explorers_gsp210.sh
+sudo chmod +x qwiklab_explorers_gsp393.sh
 
-./qwiklab_explorers_gsp210.sh
+./qwiklab_explorers_gsp393.sh
 ```
 
 ---
