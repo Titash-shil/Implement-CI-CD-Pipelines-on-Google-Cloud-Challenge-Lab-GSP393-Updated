@@ -108,7 +108,7 @@ gcloud artifacts repositories create cicd-challenge \
 --location=$REGION
 
 echo
-echo "${BLUE_TEXT}${BOLD_TEXT}☸ Creating GKE cluster 'cd-staging' in zone ${WHITE_TEXT}${BOLD_TEXT}$ZONE${RESET_FORMAT}${BLUE_TEXT} (asynchronously)...${RESET_FORMAT}"
+echo "${BLUE_TEXT}${BOLD_TEXT} Creating GKE cluster 'cd-staging' in zone ${WHITE_TEXT}${BOLD_TEXT}$ZONE${RESET_FORMAT}${BLUE_TEXT} (asynchronously)...${RESET_FORMAT}"
 gcloud container clusters create cd-staging --node-locations=$ZONE --num-nodes=1 --async
 echo "${BLUE_TEXT}${BOLD_TEXT} Creating GKE cluster 'cd-production' in zone ${WHITE_TEXT}${BOLD_TEXT}$ZONE${RESET_FORMAT}${BLUE_TEXT} (asynchronously)...${RESET_FORMAT}"
 gcloud container clusters create cd-production --node-locations=$ZONE --num-nodes=1 --async
@@ -127,11 +127,11 @@ cd tutorials/base
 echo
 echo "${BLUE_TEXT}${BOLD_TEXT} Generating Skaffold configuration (skaffold.yaml) from template...${RESET_FORMAT}"
 envsubst < clouddeploy-config/skaffold.yaml.template > web/skaffold.yaml
-echo "${BLUE_TEXT}${BOLD_TEXT}🔧 Updating Skaffold configuration with Project ID: ${WHITE_TEXT}${BOLD_TEXT}$PROJECT_ID${RESET_FORMAT}${BLUE_TEXT}...${RESET_FORMAT}"
+echo "${BLUE_TEXT}${BOLD_TEXT} Updating Skaffold configuration with Project ID: ${WHITE_TEXT}${BOLD_TEXT}$PROJECT_ID${RESET_FORMAT}${BLUE_TEXT}...${RESET_FORMAT}"
 sed -i "s/{{project-id}}/$PROJECT_ID/g" web/skaffold.yaml
 
 echo
-echo "${BLUE_TEXT}${BOLD_TEXT}☁️ Checking for Cloud Storage bucket ${WHITE_TEXT}${BOLD_TEXT}gs://${PROJECT_ID}_cloudbuild/${RESET_FORMAT}${BLUE_TEXT} and creating if it doesn't exist...${RESET_FORMAT}"
+echo "${BLUE_TEXT}${BOLD_TEXT} Checking for Cloud Storage bucket ${WHITE_TEXT}${BOLD_TEXT}gs://${PROJECT_ID}_cloudbuild/${RESET_FORMAT}${BLUE_TEXT} and creating if it doesn't exist...${RESET_FORMAT}"
 if ! gsutil ls "gs://${PROJECT_ID}_cloudbuild/" &>/dev/null; then
   echo "${YELLOW_TEXT}${BOLD_TEXT}Bucket not found. Creating bucket in region ${WHITE_TEXT}${BOLD_TEXT}${REGION}${RESET_FORMAT}${YELLOW_TEXT}...${RESET_FORMAT}"
   gsutil mb -p "${PROJECT_ID}" -l "${REGION}" -b on "gs://${PROJECT_ID}_cloudbuild/"
@@ -184,7 +184,7 @@ for cluster in "${CLUSTERS[@]}"; do
   
   while [ "$status" != "RUNNING" ]; do
     echo "${YELLOW_TEXT} Cluster ${BOLD_TEXT}$cluster${RESET_FORMAT}${YELLOW_TEXT} is currently ${BOLD_TEXT}$status${RESET_FORMAT}${YELLOW_TEXT}. Waiting for it to be 'RUNNING'...${RESET_FORMAT}"
-    echo "${MAGENTA_TEXT} Tip: While waiting, you can check out Arcade Crew for more awesome tutorials! [https://www.youtube.com/@Arcade61432]${RESET_FORMAT}"
+    echo "${MAGENTA_TEXT} Tip: You can check out QwikLab Explorers for more Qwiklabs Lab tutorials! [https://www.youtube.com/@qwiklabexplorers]${RESET_FORMAT}"
     for i in $(seq 10 -1 1); do
       echo -ne "${YELLOW_TEXT}   Waiting... ${BOLD_TEXT}$i${RESET_FORMAT}${YELLOW_TEXT} seconds remaining. \r${RESET_FORMAT}"
       sleep 1
